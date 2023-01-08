@@ -1,9 +1,9 @@
 module.exports = (sequelize,Sequelize) => {
     const Item = sequelize.define('item', {
-        // user_id: {
-        //     type: Sequelize.INTEGER,
-        //     allowNull: false
-        // },
+        user_id: {
+            type: Sequelize.INTEGER,
+            allowNull: false
+        },
         name_item: {
             type: Sequelize.STRING,
             allowNull: false

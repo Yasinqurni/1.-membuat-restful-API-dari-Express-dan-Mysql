@@ -1,5 +1,5 @@
 const middleware = require('../middleware')
-const controller = require('../controller/auth.controller')
+const controller = require('../controller/item.controller')
 
 // const bodyParser = require('body-parser')
 
@@ -14,7 +14,7 @@ module.exports = (app) => {
         next()
     })
 
-    app.post('/api/register',[middleware.isUserExist,middleware.validEmail,middleware.validNoHP], controller.register)
-
-    app.post('/api/login', controller.login)
+    app.post('/api/item', controller.createItem)
+    app.get('/api/item', controller.readItem)
+    app.post('/api/item/id', controller.readItemById)
 }

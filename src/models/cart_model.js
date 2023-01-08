@@ -1,5 +1,5 @@
 module.exports = (sequelize,Sequelize) => {
-    const AddCart = sequelize.define('addcart', {
+    const Cart = sequelize.define('addcart', {
         user_id: {
             type: Sequelize.INTEGER,
             allowNull: false
@@ -19,5 +19,5 @@ module.exports = (sequelize,Sequelize) => {
   
     })
 
-    return AddCart
+    return Cart
 }

@@ -14,5 +14,5 @@ module.exports = (app) => {
         next()
     })
 
-    app.get('/api/profile',middleware.verifyToken, controller.profile)
+    app.get('/api/profile',middleware.verifyToken, middleware.otorisasi, controller.profile)
 }

@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken')
 const config = require('../config/auth')
+// const db = require('../models')
+// const User = db.User
 
-verifyToken = (req, res, next) => {
+otorisasi = (req, res, next) => {
     let token = req.headers['authorization']
 
     if(!token) {
@@ -13,14 +15,23 @@ verifyToken = (req, res, next) => {
     jwt.verify(token, config.secret, (err, decoded) =>{
         if(err) {
             return res.status(401).json({
-                message: 'unauthentized!'
+                message: 'unauthorized',
             })
         }
-        req.userId = decoded.id
-        next()
+        req.UserRole = decoded.role
+        
+        if(req.UserRole == 'admin' || req.UserRole == 'seller') {
+            next()
+        }else{
+            res.status(500).json({
+                message: 'you are not allowed'
+            })
+        }
     })
+
+
 }
 
 module.exports = {
-    verifyToken,
+    otorisasi,
 }

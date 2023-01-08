@@ -7,6 +7,7 @@ exports.profile = (req, res) => {
     .then((user) => {
             res.status(200).json({
                 id: user.id,
+                role: user.role,
                 name: user.name,
                 phone: user.phone,
                 email: user.email
