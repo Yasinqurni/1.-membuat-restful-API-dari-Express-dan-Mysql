@@ -16,12 +16,12 @@ exports.register = (req, res) => {
             message: 'user was created successfully',
             ...user
         })
-        .catch((err)=>{
-            res.status(500).json({
-                message: err.message,
-            })
+    }).catch((err)=>{
+        res.status(500).json({
+            message: err.message,
         })
     })
+
 }
 
 

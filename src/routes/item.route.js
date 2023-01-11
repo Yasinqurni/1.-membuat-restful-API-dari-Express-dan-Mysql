@@ -14,7 +14,9 @@ module.exports = (app) => {
         next()
     })
 
-    app.post('/api/item', controller.createItem)
-    app.get('/api/item', controller.readItem)
-    app.post('/api/item/id', controller.readItemById)
+    app.post('/api/item/create',[middleware.verifyToken, middleware.otorisasi], controller.createItem)
+    app.get('/api/item/', controller.readItem)
+    app.get('/api/item/:id', controller.readItemById)
+    app.patch('/api/item/update/:id',[middleware.verifyToken, middleware.otorisasi,middleware.accessUser], controller.updateItem)
+    app.delete('/api/item/delete/:id',[middleware.verifyToken, middleware.otorisasi,middleware.accessUser], controller.deleteItem)
 }
