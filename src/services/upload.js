@@ -3,7 +3,6 @@ const util = require('util')
 const path = require('path')
 const __basedir = path.resolve()
 
-console.log(__basedir)
 
 const imageFilter = (req, file, cb) => {
     if(file.mimetype.startsWith('image')) {
@@ -18,7 +17,7 @@ const storage = multer.diskStorage({
         cb(null, __basedir + '/storage/upload')
     },
     filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`)
+        cb(null, `${Date.now()}-${file.originalname}`) //
     },
 })
 

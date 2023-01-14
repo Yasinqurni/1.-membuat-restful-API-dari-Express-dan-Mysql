@@ -14,5 +14,6 @@ module.exports = (app) => {
         next()
     })
 
-    app.post('/api/item/:id/upload', controller.upload)
+    app.post('/api/image/:id/upload', controller.upload)
+    app.delete('/api/image/:id', controller.remove)
 }

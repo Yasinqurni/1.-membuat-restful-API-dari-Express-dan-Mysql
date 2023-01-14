@@ -6,7 +6,7 @@ module.exports = (sequelize,Sequelize) => {
             allowNull: false
         },
         file: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.STRING,
             allowNull: false
         },
     })
