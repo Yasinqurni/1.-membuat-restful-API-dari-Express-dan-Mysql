@@ -41,7 +41,7 @@ db.sequelize
 
 app.get('/', (req, res) => {
     res.json({
-        message: 'server is running by Yasin'
+        message: 'server is running'
     })
 })
 

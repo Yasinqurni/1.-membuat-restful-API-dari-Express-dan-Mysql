@@ -8,7 +8,7 @@ db.Order = require('./order_model')(db.sequelize, db.Sequelize)
 db.Images = require('./image.model')(db.sequelize, db.Sequelize)
 
 db.Item.hasMany(db.Images, {
-    foreignKey: 'item_id',
+    foreignKey: 'item_id'
 }) 
 
 module.exports = db

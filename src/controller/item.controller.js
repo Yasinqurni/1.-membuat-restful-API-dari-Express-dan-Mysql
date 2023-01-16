@@ -1,5 +1,6 @@
 const db = require('../models')
 const Item = db.Item
+const Images = db.Images
 
 
 
@@ -35,7 +36,9 @@ exports.createItem = (req, res) => {
 
 //read item seluruh role bisa akses
 exports.readItem = (req, res) => {
-    Item.findAll()
+    Item.findAll({
+        include: Images
+    })
     .then((item) => {
         res.status(200).json({
             ...item,

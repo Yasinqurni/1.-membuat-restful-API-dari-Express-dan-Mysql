@@ -1,8 +1,7 @@
 module.exports = (sequelize,Sequelize) => {
     const Images = sequelize.define('image', {
-
         item_id: {
-            type: Sequelize.STRING,
+            type: Sequelize.INTEGER,
             allowNull: false
         },
         file: {
