@@ -1,4 +1,5 @@
 const db = require('../models')
+const {pagination, getPagingData} = require('../services/pagination')
 const Item = db.Item
 const Images = db.Images
 
@@ -36,13 +37,18 @@ exports.createItem = (req, res) => {
 
 //read item seluruh role bisa akses
 exports.readItem = (req, res) => {
-    Item.findAll({
-        include: Images
+    const {page, size} = req.query
+    const {limit, offset} = pagination(page, size)
+
+    Item.findAndCountAll({
+        limit,
+        offset,
+        include: Images,
     })
-    .then((item) => {
+    .then((result) => {
+        const response = getPagingData(result, page, limit)
         res.status(200).json({
-            ...item,
-            total_item: item.length,
+        ...response
         })
     })
     .catch((err) => {
